@@ -67,21 +67,21 @@ WatchDogApp.controller('DataController', ['$scope', function ($scope) {
         }
 
     }
-    $scope.btnImprimir = function () {
-        /*if ($scope.resultReporteFechas.length === 0) {*/
-        swal(
-            '',
-            'No hay datos que descargar',
-            "error",
-        )
-        console.log("No hay datos que descargar");
-    } /*else*/
-    /*if ($scope.resultReporteFechas.length > 0) {*/
-    $("#fechaInstalacion").table2excel({
-        filename: "AuditoríadeRegistros_Fechas"
-    });
-    /*}*/
-
+   $scope.btnImprimir = function () {
+        if ($scope.resultReporteFechas.length === 0) {
+            swal(
+                '',
+                'No hay datos que descargar',
+                "error",
+            )
+            console.log("No hay datos que descargar");
+        } else
+        if ($scope.resultReporteFechas.length > 0) {
+            $("#fechaInstalacion").table2excel({
+                filename: "AuditoríadeRegistros_Fechas"
+            });
+        }
+    }
 
 
 
