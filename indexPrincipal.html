@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Métrica Móvil | ☼ LiveData Suntech</title>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta http-equiv="x-ua-compatible" content="ie-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Dependencias-->
+    <link href="styles/main.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.min.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/sweetalert2/dist/sweetalert2.min.css">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="bower_components/sweetalert2/dist/sweetalert2.all.js"></script>
+    <script src="https://unpkg.com/promise-polyfill@7.1.0/dist/promise.min.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/login.js"></script>
+    <script src="scripts/datosController.js"></script>
+    <script type="text/javascript" src="bower_components/angular-material-data-table/dist/md-data-table.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="bower_components/jquery-table2excel/dist/jquery.table2excel.min.js"></script>
+</head>
+
+<body ng-app="WatchDogApp">
+    <!--Archivo nuevo-->
+    <header>
+        <!--md-content class="md-padding">
+            <div layout="column" layout-gt-xs="row">
+                <md-card flex flex-gt-xs="100" layout-align="center center" style="background-color: rgb(140, 14, 14)">
+                    <h1 class="md-display-3" style="color: rgb(194, 189, 189)">Live Data
+                        <small class="text-muted" style="color: rgb(145, 146, 146)"> Suntech ☀</small>
+                    </h1>
+                </md-card>
+            </div>
+        </md-content-->
+    </header>
+    <!--div id="signin-content" ng-show="!activeSession"></div-->
+    <div id="example-content" ng-show="activeSession" ng-controller="DataController">
+        <div class="jumbotron" style="background-color: #690f0f">
+            <div class="page-header">
+                <center>
+                    <h1 class="md-display-1" style="color: #c5c2c2fa"> Datos en vivo
+                        <small style="color: rgb(142,102,9)">Suntech </small>
+                        <small style="color: rgb(123,88,22)"> ☼ </small>
+
+                    </h1>
+                </center>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <!--datepickers-->
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div layout="row">
+                            <md-input-container flex="40">
+                                <label>Device id</label>
+                                <input name="clientName" ng-model="project.clientName">
+                            </md-input-container>
+                            <md-input-container flex="25">
+                                <div flex-gt-xs>
+                                    <md-datepicker ng-model="Data.start" md-current-view="year" md-placeholder="Enter date"></md-datepicker>
+                                </div>
+                            </md-input-container>
+                            <md-input-container flex="25">
+                                <div flex-gt-xs>
+                                    <md-datepicker ng-model="Data.end" md-current-view="year" md-placeholder="Enter date"></md-datepicker>
+                                </div>
+                            </md-input-container>
+                            <p class="text-right">
+                                <br>
+                                <md-button class="btn-primary" ng-click="btnConsultar()">
+                                    <span class="md-caption">Consultar</span>
+                                </md-button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading" style="background-color: #fde5e561">Datos de consulta
+                        <md-input-container flex="100">
+                            <button type="button" class="btn btn-primary  btn-sm" ng-click="btnImprimir()">
+                                <span class="glyphicon glyphicon-cloud-download"></span> Download
+                            </button>
+                        </md-input-container>
+
+                    </div>
+                    <div class="panel-body">
+                    </div>
+
+                    <!-- Table -->
+                    <md-table-container>
+                        <!--ng-model="selected " esto va en la tabla-->
+                        <table md-table md-row-select md-progress="promise " id="fechaInstalacion" ng-model="selected">
+                            <thead md-head>
+                                <tr md-row>
+                                    <th md-column md-numeric>Id</th>
+                                    <!--th md-column md-numeric>VIN </th-->
+                                    <!--th md-column md-numeric>Económico </th-->
+                                    <th md-column md-numeric>Numero de serie</th>
+                                    <th md-column md-numeric>Ultima comunicacion Geotab</th>
+                                    <th md-column md-numeric>Fecha inicio de consulta</th>
+                                    <th md-column md-numeric>Fecha fin de consulta</th>
+                                    <th md-column md-numeric>Geotab boton de panico</th>
+                                    <th md-column md-numeric>Cinturon de seguridad</th>
+                                    <th md-column md-numeric>Reversa</th>
+                                    <th md-column md-numeric>Aux 5</th>
+                                    <th md-column md-numeric>Aux 6</th>
+                                    <th md-column md-numeric>Aux 7</th>
+                                    <th md-column md-numeric>Aux 8</th>
+                                    <th md-column md-numeric>Circulo de seguridad</th>
+                                    <th md-column md-numeric>sunTech Id</th>
+                                    <th md-column md-numeric>sunTech Boton de panico</th>
+                                    <th md-column md-numeric>Llamada en cabina</th>
+                                </tr>
+                            </thead>
+                            <tbody md-body>
+                                <tr md-row md-select="dispositivo" md-select-id="GOSerialNumber" md-auto-select ng-repeat="dispositivo in resultConsultaVehiculos ">
+                                    <td md-cell>{{dispositivo.GOId}}</td>
+                                    <!--td md-cell>{{dispositivo.vehicleIdentificationNumber}}</td-->
+                                    <!--td>{{lstDevice.name}}</td-->
+                                    <td md-cell>{{dispositivo.GOSerialNumber}}</td>
+                                    <td md-cell>{{dispositivo.LastCommunication}}</td>
+                                    <td md-cell>{{Data.start}}</td>
+                                    <td md-cell>{{Data.end}}</td>
+                                    <td md-cell>{{dispositivo.GOPanicButton}}</td>
+                                    <td md-cell>{{dispositivo.GOBelt}}</td>
+                                    <td md-cell>{{dispositivo.GOReverse}}</td>
+                                    <td md-cell>{{dispositivo.GOButton1}}</td>
+                                    <td md-cell>{{dispositivo.GOButton2}}</td>
+                                    <td md-cell>{{dispositivo.GOButton3}}</td>
+                                    <td md-cell>{{dispositivo.GOButton4}}</td>
+                                    <td md-cell>{{dispositivo.GOSafetyCircle}}</td>
+                                    <td md-cell>{{dispositivo.SunTechId}}</td>
+                                    <td md-cell>{{dispositivo.SunTechPanicButton}}</td>
+                                    <td md-cell>{{dispositivo.SunTechCalls}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </md-table-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

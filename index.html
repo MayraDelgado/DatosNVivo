@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Live Data Suntech </title>
+    <link href="styles/geotab.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="scripts/api.js"></script>
+    <script src="scripts/login.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <!-- Angular Material Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="scripts/app.js"></script>
+</head>
+
+<body ng-app="WatchDogApp">
+    <header>
+        <div class="container">
+            <br>
+            <br>
+            <center>
+                <div layout="row" layout-wrap>
+                    <div flex-gt-sm="80" flex="80">
+                        <h2 class="md-display-3" style="color:rgb(47, 52, 58)">Live Data
+                            <span class="md-title" style="color:slategrey">Suntech ☀</span>
+                            <!--img src="https://rawgit.com/MayraDelgado/paroMotor/master/metrica2.png" alt="" width="220px" height="85.059px"-->
+                        </h2>
+                    </div>
+                </div>
+            </center>
+        </div>
+    </header>
+
+    <div class="container bordered spaced">
+
+        <div id="signin-content" ng-show="!activeSession"></div>
+        <div id="example-content" ng-show="activeSession" ng-controller="DataController">
+            <div class="container-fluid">
+                <div class="panel panel-primary">
+                    <div class="jumbotron">
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Panel heading</div>
+
+                            <!-- Table -->
+                            <table class="table">
+                                ...
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

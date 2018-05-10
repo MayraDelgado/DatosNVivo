@@ -1,0 +1,25 @@
+{
+  "name": "WatchDog",
+  "authors": [
+    "Chrono1323 <daniel.ramosdorado@metricamovil.com>"
+  ],
+  "description": "Installations help",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://cpp.metricamovil.com/WatchDog/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "angular": "^1.6.8"
+  },
+  "dependencies": {
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "angular-material-data-table": "^0.10.10",
+    "jquery-table2excel": "^1.1.1"
+  }
+}

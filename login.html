@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> ☀ L!veData Suntech</title>
+
+    <link href="styles/geotab.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+    <!--script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script-->
+    <!--link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css"-->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script src="scripts/api.js"></script>
+    <script src="scripts/login.js"></script>
+    <!--script src="bower_components/angular/angular.min.js"></script-->
+    <!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+    /-->
+    <scrip src="https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js"></scrip>
+    <!-- Angular Material Library -->
+    <!--script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script-->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/datosController.js"></script>
+    <!--script src="bower_components/moment/min/moment.min.js"></script-->
+
+</head>
+
+<body ng-app="WatchDogApp">
+    <header>
+        <!--div class="container"-->
+        <div class="jumbotron" style="background-color: rgb(150, 22, 22)">
+
+
+            <center>
+                <div class="page-header">
+                    <h1>
+                        LIVE DATA
+                        <small class="text-muted">Suntech ☀</small>
+                    </h1>
+                    <!--h1 style="color: rgb(226, 231, 231) ">Live Data
+                        <small style="color: rgb(143, 138, 138)">Suntech ☀</small>
+                    </h1-->
+                </div>
+            </center>
+        </div>
+        <!--/div-->
+
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container" style="background-color: rgb(230, 227, 227)">
+        <center>
+            <div id="signin-content" ng-show="!activeSession"></div>
+        </center>
+        <div id="example-content" ng-show="activeSession" ng-controller="DataController">
+            <br>
+            <br>
+            <br>
+            <div class="panel panel-default">
+                <!--div class="container"-->
+                <br>
+                <br>
+                <md-content layout-padding>
+                    <div layout="row">
+                        <md-input-container flex="40">
+                            <label>Client Name</label>
+                            <input required name="clientName" ng-model="project.clientName">
+
+                        </md-input-container>
+                        <md-input-container flex="25">
+                            <md-datepicker ng-model="ctrl.myDate" md-current-view="year" md-placeholder="Del"></md-datepicker>
+                        </md-input-container>
+                        <md-input-container flex="25">
+                            <md-datepicker ng-model="ctrl.myDate" md-current-view="year" md-placeholder="Al"></md-datepicker>
+                        </md-input-container>
+                        <md-input-container flex="10">
+                            <button type="button" class="btn btn-primary  btn-sm" ng-click="btnConsultar()">
+                                <span class="glyphicon glyphicon-search"></span> Search
+                            </button>
+                        </md-input-container>
+                    </div>
+                </md-content>
+            </div>
+        </div>
+    </div>
+    <!--inicia tabla-->
+    <div class="jumbotron" style="background-color: rgb(255, 255, 255)">
+        <div class="container">
+
+
+            <blockquote class="blockquote ">
+                <footer class="blockquote-footer" style="color: rgb(75, 46, 33)">Datos de consulta
+                    <p class="text-right">
+                        <button type="button" class="btn btn-primary  btn-sm" ng-click="btnImprimir()">
+                            <span class="glyphicon glyphicon-cloud-download"></span> Download
+                        </button>
+                    </p>
+                </footer>
+            </blockquote>
+
+            <div class="bs-example">
+                <table class="table table-condensed">
+                    <thead class="danger">
+                        <tr>
+                            <th>Device Id</th>
+                            <th>SunTechPanicButton</th>
+                            <th>SunTechCalls</th>
+                            <th>Device Id</th>
+                            <th>SunTechPanicButton</th>
+                            <th>SunTechCalls</th>
+                            <th>etc...</th>
+                            <th>etc..</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>john@example.com</td>
+                            <td>as</td>
+                            <td>as</td>
+                            <td>as</td>
+                            <td>as</td>
+                            <td>as</td>
+                        </tr>
+                        <tr>
+                            <td>Mary</td>
+                            <td>Moe</td>
+                            <td>mary@example.com</td>
+                            <td>sd</td>
+                            <td>as</td>
+                            <td>as</td>
+                            <td>as</td>
+                            <td>as</td>
+                        </tr>
+                        <tr>
+                            <td>July</td>
+                            <td>Dooley</td>
+                            <td>july@example.com</td>
+                            <td>wd</td>
+                            <td>as</td>
+                            <td>as</td>
+                            <td>as</td>
+                            <td>as</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--fin tabla-->
+
+</body>
+
+</html>
