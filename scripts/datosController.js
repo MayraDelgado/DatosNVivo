@@ -24,6 +24,7 @@ WatchDogApp.controller('DataController', ['$scope', function ($scope) {
         limit: 5,
         page: 1
     };
+    $scope.resultReporteFechas = [];
     /*
         function success(dispositivo) {
             $scope.dispositivo = dispositivo;
